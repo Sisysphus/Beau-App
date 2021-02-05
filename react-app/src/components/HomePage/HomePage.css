@@ -1,0 +1,10 @@
+.card-display {
+  width: 400px;
+  position: relative;
+  height: 50vh;
+  padding: 20px;
+  max-width: 85vw;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+}

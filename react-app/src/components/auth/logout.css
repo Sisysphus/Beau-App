@@ -1,0 +1,13 @@
+.log-out {
+  text-align: center;
+  text-transform: uppercase;
+  background-size: 200% auto;
+  color: #fe3c72;
+  background-color: #424242;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  border: none;
+  padding: 10px 25px;
+}

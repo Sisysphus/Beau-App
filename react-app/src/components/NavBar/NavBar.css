@@ -1,9 +1,28 @@
 .header {
   display: flex;
   justify-content: space-between;
-  /* background: linear-gradient(to right, #4e4376, #2b5876); */
+  background: linear-gradient(to right, #fe3c72, #424242);
 }
 .beau-logo {
   width: 30px;
   height: 30px;
+}
+
+.login {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logout-button {
+  width: 200px;
+  height: 200px;
+}
+
+.person {
+  color: #fe3c72;
 }
