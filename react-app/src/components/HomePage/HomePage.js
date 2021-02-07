@@ -15,6 +15,36 @@ const HomePage = () => {
     },
   ]);
 
+  const [message, setMessage] = useState("");
+  const [friendId, setFriendId] = useState(1);
+  const [myId, setMyId] = useState(0);
+
+  const onMessageFormSubmit = async (e) => {
+    e.preventDefault();
+    console.log({
+      userAccountId: myId,
+      userAccountId2: friendId,
+      messageText: message,
+    });
+    const res = await fetch("/api/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userAccountId: myId,
+        userAccountId2: friendId,
+        messageText: message,
+      }),
+    });
+
+    if(res.ok){
+      const res2 = await res.json();
+      console.log(res2.messageSql)
+      console.log(res2.conversation)
+    }
+  };
+
   // Always allow keys in React for efficient re-render
   // Makes app super fast
   return (
@@ -34,6 +64,22 @@ const HomePage = () => {
           </div>
         </TinderCard>
       ))}
+      <h1>Send Message</h1>
+      <form onSubmit={onMessageFormSubmit}>
+        <label>Friend Id</label>
+        <input
+          type="number"
+          value={friendId}
+          onChange={(e) => setFriendId(Number(e.target.value))}
+        />
+        <label>Message</label>
+        <input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <button type="submit">Send</button>
+      </form>
     </div>
   );
 };

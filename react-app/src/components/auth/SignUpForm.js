@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
-import { signUp } from '../../services/auth';
+import { Redirect } from "react-router-dom";
+import { signUp } from "../../services/auth";
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [genderId, setGenderId] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(username, email, password, firstName, genderId);
       if (!user.errors) {
         setAuthenticated(true);
       }
@@ -74,6 +76,26 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           name="repeat_password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
+          required={true}
+        ></input>
+      </div>
+      <div>
+        <label>First Name</label>
+        <input
+          type="text"
+          name="first_name"
+          onChange={(e) => setFirstName(e.target.value)}
+          value={firstName}
+          required={true}
+        ></input>
+      </div>
+      <div>
+        <label>GenderId</label>
+        <input
+          type="number"
+          name="gender_id"
+          onChange={(e) => setGenderId(Number(e.target.value))}
+          value={genderId}
           required={true}
         ></input>
       </div>
