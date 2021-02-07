@@ -10,12 +10,12 @@
 
 .login {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .logout {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .logout-button {

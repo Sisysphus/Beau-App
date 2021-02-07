@@ -9,7 +9,7 @@ const LogoutButton = ({ setAuthenticated }) => {
 
   return (
     <button className="log-out" onClick={onLogout}>
-      Logout
+      Join us
     </button>
   );
 };

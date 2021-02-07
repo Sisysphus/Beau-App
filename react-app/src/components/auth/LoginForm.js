@@ -29,6 +29,11 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     return <Redirect to="/" />;
   }
 
+  const DemoUser = () => {
+    setEmail("demo@aa.io");
+    setPassword("password");
+  };
+
   return (
     <form onSubmit={onLogin}>
       <div>
@@ -36,6 +41,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <div>{error}</div>
         ))}
       </div>
+
       <div>
         <label htmlFor="email">Email</label>
         <input
@@ -56,6 +62,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           onChange={updatePassword}
         />
         <button type="submit">Login</button>
+        <button onClick={DemoUser} type="submit">
+          Demo
+        </button>
       </div>
     </form>
   );
