@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
+import { NavLink } from "react-router-dom";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -41,30 +42,41 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <div>{error}</div>
         ))}
       </div>
-
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type="submit">Login</button>
-        <button onClick={DemoUser} type="submit">
-          Demo
-        </button>
+      <div className="container-boi">
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            name="email"
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={updateEmail}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={updatePassword}
+          />
+          <button type="submit" className="login-button">
+            Login
+          </button>
+          <button onClick={DemoUser} type="submit">
+            Demo
+          </button>
+        </div>
+        <NavLink
+          to="/sign-up"
+          className="logout"
+          exact={true}
+          activeClassName="active"
+        >
+          Sign Up
+        </NavLink>
       </div>
     </form>
   );

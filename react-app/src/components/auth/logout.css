@@ -11,3 +11,12 @@
   border: none;
   padding: 10px 25px;
 }
+
+.login-button {
+}
+
+.container-boi {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}

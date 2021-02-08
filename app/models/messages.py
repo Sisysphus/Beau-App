@@ -2,7 +2,6 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-
 class Message(db.Model):
     __tablename__ = 'messages'
 
@@ -20,3 +19,9 @@ class Message(db.Model):
             "timeClosed": self.timeClosed,
             "userAccountId2": self.userAccountId2,
         }
+
+
+# Query the matched messages table where userAccountId == currentuserId
+# include user to dict on second id to provide information on sender
+# Make that a link that pulls up the conversation with that matchedmessagesId
+# Sort via timestamp
