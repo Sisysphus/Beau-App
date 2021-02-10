@@ -38,34 +38,38 @@ const HomePage = () => {
       }),
     });
 
-    if(res.ok){
+    if (res.ok) {
       const res2 = await res.json();
-      console.log(res2.messageSql)
-      console.log(res2.conversation)
+      console.log(res2.messageSql);
+      console.log(res2.conversation);
     }
   };
+
+  // useEffect
 
   // Always allow keys in React for efficient re-render
   // Makes app super fast
   return (
     <div className="homepage">
-      <h1>hello</h1>
-      {people.map((person) => (
-        <TinderCard
-          className="swipedCard"
-          key={person.name}
-          preventSwipe={["up", "down"]}
-        >
-          <div
-            className="card-display"
-            style={{ backgroundImage: `url(${person.url})` }}
+      <h1 className="beau-text">Beau</h1>
+      <div className="swipedCardsContainer">
+        {people.map((person) => (
+          <TinderCard
+            className="swipedCard"
+            key={person.name}
+            preventSwipe={["up", "down"]}
           >
-            <h3>{person.name}</h3>
-          </div>
-        </TinderCard>
-      ))}
+            <div
+              className="card-display"
+              style={{ backgroundImage: `url(${person.url})` }}
+            >
+              <h3>{person.name}</h3>
+            </div>
+          </TinderCard>
+        ))}
+      </div>
       <h1>Send Message</h1>
-      <form onSubmit={onMessageFormSubmit}>
+      {/* <form onSubmit={onMessageFormSubmit}>
         <label>Friend Id</label>
         <input
           type="number"
@@ -79,7 +83,7 @@ const HomePage = () => {
           onChange={(e) => setMessage(e.target.value)}
         />
         <button type="submit">Send</button>
-      </form>
+      </form> */}
     </div>
   );
 };

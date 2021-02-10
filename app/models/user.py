@@ -16,9 +16,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    photos = db.relationship("UserPhoto", foreign_keys="UserPhoto.userAccountId")
-
-
+    photos = db.relationship(
+        "UserPhoto", foreign_keys="UserPhoto.userAccountId")
 
     @property
     def password(self):
@@ -42,3 +41,15 @@ class User(db.Model, UserMixin):
             "genderId": self.genderId,
             "photos": [photo.to_dict() for photo in self.photos]
         }
+
+
+
+
+# Brad Notes
+# Add a boolean field to the messages for read/unread
+# When user logs in query. Change boolean key from unread to read
+
+# Ondelete button for messages
+# Get all messages - map for access to messageId
+# Have instructions on using the website
+# Excel at Wiki!
