@@ -6,7 +6,8 @@ import HomeIcon from "@material-ui/icons/Home";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import image1 from "./doggo.png";
 import PersonIcon from "@material-ui/icons/Person";
-const NavBar = ({ setAuthenticated }) => {
+
+const NavBar = ({ setAuthenticated, loggedInUser }) => {
   return (
     <nav className="top-navbar">
       <div className="header">
@@ -19,7 +20,11 @@ const NavBar = ({ setAuthenticated }) => {
         >
           <img src={image1} className="beau-logo" alt="tinder" />
         </NavLink>
-        <NavLink to="/users" exact={true} activeClassName="active">
+        <NavLink
+          to={`/users/${loggedInUser.id}`}
+          exact={true}
+          activeClassName="active"
+        >
           <PersonIcon className="person" fontSize="large" />
         </NavLink>
         <LogoutButton

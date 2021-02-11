@@ -4,7 +4,7 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
+// import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 import HomePage from "./components/HomePage/HomePage";
@@ -12,12 +12,15 @@ import HomePage from "./components/HomePage/HomePage";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     (async () => {
       const user = await authenticate();
+      console.log(user);
       if (!user.errors) {
         setAuthenticated(true);
+        setUser(user);
       }
       setLoaded(true);
     })();
@@ -29,7 +32,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
+      <NavBar loggedInUser={user || {}} setAuthenticated={setAuthenticated} />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm
@@ -43,13 +46,13 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
-        <ProtectedRoute
+        {/* <ProtectedRoute
           path="/users"
           exact={true}
           authenticated={authenticated}
         >
-          <UsersList />
-        </ProtectedRoute>
+          {/* <UsersList /> */}
+        {/* </ProtectedRoute> */}
         <ProtectedRoute
           path="/users/:userId"
           exact={true}
@@ -58,7 +61,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <HomePage />
+          <HomePage loggedInUser={user} />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

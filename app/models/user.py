@@ -19,6 +19,16 @@ class User(db.Model, UserMixin):
     photos = db.relationship(
         "UserPhoto", foreign_keys="UserPhoto.userAccountId")
 
+# times you've swiped right
+    swipe1 = db.relationship(
+        "Swipe", foreign_keys="Swipe.userId1"
+    )
+# times you've been swiped right on
+    swipe2 = db.relationship(
+        "Swipe", foreign_keys="Swipe.userId2"
+
+    )
+
     @property
     def password(self):
         return self.hashed_password
@@ -41,8 +51,6 @@ class User(db.Model, UserMixin):
             "genderId": self.genderId,
             "photos": [photo.to_dict() for photo in self.photos]
         }
-
-
 
 
 # Brad Notes

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TinderCard from "react-tinder-card";
 import "./HomePage.css";
-const HomePage = () => {
+const HomePage = ({ loggedInUser }) => {
   const [people, setPeople] = useState([
     {
       name: "Golden Retriever",
@@ -22,7 +22,11 @@ const HomePage = () => {
   const onMessageFormSubmit = async (e) => {
     e.preventDefault();
     console.log({
-      userAccountId: myId,
+      userAccountId: loggedInUser && loggedInUser.id,
+      /* if user undefined or falsy
+      / if we just put user.id if user is null we wont retrieve that
+      / we are stopping user.id from being evaluated if user is false
+      */
       userAccountId2: friendId,
       messageText: message,
     });
@@ -32,7 +36,7 @@ const HomePage = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userAccountId: myId,
+        userAccountId: loggedInUser && loggedInUser.id,
         userAccountId2: friendId,
         messageText: message,
       }),
@@ -46,10 +50,12 @@ const HomePage = () => {
   };
 
   // useEffect
-
   // Always allow keys in React for efficient re-render
   // Makes app super fast
-  return (
+  // thing = thing1 || thing2
+  // thing becomes thing 1 if true or thing2 if false - Dependant on thing1
+
+  return loggedInUser ? (
     <div className="homepage">
       <h1 className="beau-text">Beau</h1>
       <div className="swipedCardsContainer">
@@ -69,7 +75,7 @@ const HomePage = () => {
         ))}
       </div>
       <h1>Send Message</h1>
-      {/* <form onSubmit={onMessageFormSubmit}>
+      <form onSubmit={onMessageFormSubmit}>
         <label>Friend Id</label>
         <input
           type="number"
@@ -83,9 +89,9 @@ const HomePage = () => {
           onChange={(e) => setMessage(e.target.value)}
         />
         <button type="submit">Send</button>
-      </form> */}
+      </form>
     </div>
-  );
+  ) : null;
 };
 
 export default HomePage;
