@@ -1,19 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import "./HomePage.css";
 const HomePage = ({ loggedInUser }) => {
-  const [people, setPeople] = useState([
-    {
-      name: "Golden Retriever",
-      url:
-        "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*",
-    },
-    {
-      name: "Rotweiler",
-      url:
-        "https://vetstreet.brightspotcdn.com/dims4/default/016b763/2147483647/crop/0x0%2B0%2B0/resize/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2Fde%2F7def60a7fb11e0a0d50050568d634f%2Ffile%2FRottweiler-5-645mk062811.jpg",
-    },
-  ]);
+  const [people, setPeople] = useState([]);
 
   const [message, setMessage] = useState("");
   const [friendId, setFriendId] = useState(1);
@@ -49,11 +38,23 @@ const HomePage = ({ loggedInUser }) => {
     }
   };
 
+  const onSwipe = (direction, username) => {
+    console.log("You swiped: " + direction, username);
+  };
+
   // useEffect
   // Always allow keys in React for efficient re-render
   // Makes app super fast
   // thing = thing1 || thing2
   // thing becomes thing 1 if true or thing2 if false - Dependant on thing1
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch("/api/users/");
+      const { users } = await response.json();
+      setPeople(users);
+    })();
+  }, []);
 
   return loggedInUser ? (
     <div className="homepage">
@@ -61,13 +62,16 @@ const HomePage = ({ loggedInUser }) => {
       <div className="swipedCardsContainer">
         {people.map((person) => (
           <TinderCard
+            onCardLeftScreen={(direction) =>
+              onSwipe(direction, person.username)
+            }
             className="swipedCard"
             key={person.name}
             preventSwipe={["up", "down"]}
           >
             <div
               className="card-display"
-              style={{ backgroundImage: `url(${person.url})` }}
+              style={{ backgroundImage: `url(${person.profilePhoto.url})` }}
             >
               <h3>{person.name}</h3>
             </div>

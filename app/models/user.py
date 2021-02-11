@@ -49,7 +49,8 @@ class User(db.Model, UserMixin):
             "email": self.email,
             "firstName": self.firstName,
             "genderId": self.genderId,
-            "photos": [photo.to_dict() for photo in self.photos]
+            "photos": [photo.to_dict() for photo in self.photos],
+            "profilePhoto": self.photos[0].to_dict() if len(self.photos) else {"url": None}
         }
 
 

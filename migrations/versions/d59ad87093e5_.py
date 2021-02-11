@@ -1,8 +1,8 @@
-"""Added new join table 
+"""empty message
 
-Revision ID: 0a2e30f2c288
+Revision ID: d59ad87093e5
 Revises: 
-Create Date: 2021-02-11 13:28:52.759346
+Create Date: 2021-02-11 17:50:57.991824
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0a2e30f2c288'
+revision = 'd59ad87093e5'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -66,7 +66,7 @@ def upgrade():
     op.create_table('userPhotos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userAccountId', sa.Integer(), nullable=False),
-    sa.Column('details', sa.String(length=100), nullable=False),
+    sa.Column('url', sa.String(length=100), nullable=False),
     sa.ForeignKeyConstraint(['userAccountId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

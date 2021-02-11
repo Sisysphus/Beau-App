@@ -32,3 +32,6 @@
   bottom: 10;
   color: white;
 }
+#root {
+  overflow: hidden;
+}

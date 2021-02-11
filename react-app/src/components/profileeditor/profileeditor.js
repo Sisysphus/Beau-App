@@ -21,12 +21,13 @@ function ProfileEditor({ displayInfo }) {
         username,
         email,
         password,
-        repeatPassword,
         firstName,
         genderId,
         photo,
       }),
     });
+    const { Success } = await response.json();
+    console.log(Success);
   };
   /* If display info is true actually return comp otherwise don't  */
   return displayInfo ? (

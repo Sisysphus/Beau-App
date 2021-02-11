@@ -1,7 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, Swipe
-
+from app.models import User, Swipe, db, UserPhoto
 user_routes = Blueprint('users', __name__)
 
 
@@ -12,7 +11,7 @@ def users():
     return {"users": [user.to_dict() for user in users]}
 
 
-@user_routes.route('/<int:id>')
+@user_routes.route('/<int:id>', methods=['GET'])
 @login_required
 def user(id):
     user = User.query.get(id)
@@ -44,8 +43,26 @@ def swipernoswiping():
     swipes = Swipe.query.filter(current_user.id == "userId1").all()
     return {"swipes": swipes}
 
-""" 
 
-hello 
+@user_routes.route('/me', methods=['PATCH'])
+@login_required
+def photo():
+    payload = request.get_json()
+    current_user.username = payload["username"]
+    current_user.email = payload["email"]
+    current_user.password = payload["password"]
+    current_user.firstName = payload["firstName"]
+    current_user.genderId = payload["genderId"]
+    photo = UserPhoto(user=current_user, url=payload['photo'])
+    db.session.add(photo)
+    db.session.commit()
+    return {
+        "Success": True
+    }
+
+
+"""
+
+hello darkness my old friend
 
 """
