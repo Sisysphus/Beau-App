@@ -7,7 +7,7 @@ const HomePage = ({ loggedInUser }) => {
   const [message, setMessage] = useState("");
   const [friendId, setFriendId] = useState(1);
   const [myId, setMyId] = useState(0);
-
+  const [myMessage, myMessageId] = useState(null);
   const onMessageFormSubmit = async (e) => {
     e.preventDefault();
     console.log({
