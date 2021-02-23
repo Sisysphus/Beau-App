@@ -35,3 +35,52 @@
 #root {
   overflow: hidden;
 }
+
+.send-message {
+  position: relative;
+  left: 10px;
+  top: 700px;
+}
+
+.beau-text {
+  font-family: "Times New Roman", serif;
+  font-weight: 400;
+  color: black;
+  font-size: 60px;
+  margin-top: 20px;
+}
+
+.homepage {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+}
+
+.buds {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  color: black;
+}
+
+.h1send {
+  position: relative;
+  left: 135px;
+}
+
+.senderboi {
+  color: white;
+  background: linear-gradient(to right, #faae7b, #432371);
+}
+
+.theline {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}

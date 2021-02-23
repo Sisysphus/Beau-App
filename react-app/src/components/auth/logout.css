@@ -2,17 +2,14 @@
   text-align: center;
   text-transform: uppercase;
   background-size: 200% auto;
-  color: #fe3c72;
-  background-color: #424242;
+  color: #000000;
+  background-color: white;
   border-radius: 5px;
   font-size: 12px;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   border: none;
   padding: 10px 25px;
-}
-
-.login-button {
 }
 
 .container-boi {

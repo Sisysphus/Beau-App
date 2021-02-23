@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(to right, #fe3c72, #424242);
+  background: linear-gradient(to right, #faae7b, #432371);
 }
 .beau-logo {
   width: 30px;
@@ -14,15 +14,9 @@
 }
 
 .logout {
-  display: flex;
-  justify-content: center;
-}
-
-.logout-button {
-  width: 200px;
-  height: 200px;
+  color: black;
 }
 
 .person {
-  color: #fe3c72;
+  color: black;
 }

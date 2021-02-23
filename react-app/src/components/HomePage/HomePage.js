@@ -59,6 +59,8 @@ const HomePage = ({ loggedInUser }) => {
   return loggedInUser ? (
     <div className="homepage">
       <h1 className="beau-text">Beau</h1>
+      <hr className="theline"></hr>
+      <h3 className="buds"></h3>
       <div className="swipedCardsContainer">
         {people.map((person) => (
           <TinderCard
@@ -77,23 +79,28 @@ const HomePage = ({ loggedInUser }) => {
             </div>
           </TinderCard>
         ))}
+
+        <div className="send-message">
+          <h1 className="h1send">Send Message</h1>
+          <form className="formy" onSubmit={onMessageFormSubmit}>
+            <label>Friend Id</label>
+            <input
+              type="number"
+              value={friendId}
+              onChange={(e) => setFriendId(Number(e.target.value))}
+            />
+            <label>Message</label>
+            <input
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <button className="senderboi" type="submit">
+              Send
+            </button>
+          </form>
+        </div>
       </div>
-      <h1>Send Message</h1>
-      <form onSubmit={onMessageFormSubmit}>
-        <label>Friend Id</label>
-        <input
-          type="number"
-          value={friendId}
-          onChange={(e) => setFriendId(Number(e.target.value))}
-        />
-        <label>Message</label>
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <button type="submit">Send</button>
-      </form>
     </div>
   ) : null;
 };

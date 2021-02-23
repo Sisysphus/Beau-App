@@ -27,10 +27,7 @@ const NavBar = ({ setAuthenticated, loggedInUser }) => {
         >
           <PersonIcon className="person" fontSize="large" />
         </NavLink>
-        <LogoutButton
-          className="logout-button"
-          setAuthenticated={setAuthenticated}
-        />
+        <LogoutButton setAuthenticated={setAuthenticated} />
       </div>
       {/* <NavLink
         to="/sign-up"
