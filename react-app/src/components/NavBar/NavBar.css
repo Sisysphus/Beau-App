@@ -1,7 +1,6 @@
 .header {
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(to right, #faae7b, #432371);
 }
 .beau-logo {
   width: 30px;
