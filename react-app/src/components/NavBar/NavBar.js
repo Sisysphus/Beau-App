@@ -18,14 +18,15 @@ const NavBar = ({ setAuthenticated, loggedInUser, authenticated }) => {
           className="home-icon"
           activeClassName="active"
         >
-          <img src={image1} className="beau-logo" alt="tinder" />
+          {/* <img src={image1} className="beau-logo" alt="tinder" /> */}
+          <h1 className="beau-logo">Beau</h1>
         </NavLink>
         <NavLink
           to={`/users/${loggedInUser.id}`}
           exact={true}
           activeClassName="active"
         >
-          {authenticated ? <i className="fas fa-user nav-icon"></i> : ""}
+          {authenticated ? <h1 className="beau-logo">Profile</h1> : ""}
         </NavLink>
         {authenticated ? (
           <LogoutButton setAuthenticated={setAuthenticated} />

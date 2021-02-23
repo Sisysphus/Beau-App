@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap%27");
 .header {
   display: flex;
   justify-content: space-between;
 }
 .beau-logo {
-  width: 30px;
-  height: 30px;
+  font-family: "Monoton", cursive;
+  color: white;
+  font-size: 40px;
 }
 
 .login {
@@ -26,5 +28,9 @@
 
 .nav-icon {
   color: #7b8390;
-  font-size: 25px;
+  font-size: 45px;
+}
+
+a {
+  text-decoration: none;
 }

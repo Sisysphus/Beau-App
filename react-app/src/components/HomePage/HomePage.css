@@ -14,8 +14,6 @@
 .swipedCardsContainer {
   display: flex;
   justify-content: center;
-  margin: 10vh;
-  margin-top: 200px;
 }
 
 .swipedCard {
@@ -27,11 +25,10 @@
   justify-content: center;
 }
 
-.card-display > h3 {
-  position: absolute;
-  bottom: 10;
-  color: white;
+.card-display {
+  height: 500px;
 }
+
 #root {
   overflow: hidden;
 }
@@ -64,7 +61,6 @@
 
 .senderboi {
   color: white;
-  background: linear-gradient(to right, #faae7b, #432371);
 }
 
 .theline {
