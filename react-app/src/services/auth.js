@@ -30,6 +30,20 @@ export const logout = async () => {
   return await response.json();
 };
 
+export const demo = async (email = "demo2@aa.io", password = "password") => {
+  const response = await fetch("/api/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+  return await response.json();
+};
+
 export const signUp = async (
   username,
   email,

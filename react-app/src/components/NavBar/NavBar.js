@@ -7,7 +7,7 @@ import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import image1 from "./doggo.png";
 import PersonIcon from "@material-ui/icons/Person";
 
-const NavBar = ({ setAuthenticated, loggedInUser }) => {
+const NavBar = ({ setAuthenticated, loggedInUser, authenticated }) => {
   return (
     <nav className="top-navbar">
       <div className="header">
@@ -25,9 +25,13 @@ const NavBar = ({ setAuthenticated, loggedInUser }) => {
           exact={true}
           activeClassName="active"
         >
-          <PersonIcon className="person" fontSize="large" />
+          {authenticated ? <i className="fas fa-user nav-icon"></i> : ""}
         </NavLink>
-        <LogoutButton setAuthenticated={setAuthenticated} />
+        {authenticated ? (
+          <LogoutButton setAuthenticated={setAuthenticated} />
+        ) : (
+          ""
+        )}
       </div>
       {/* <NavLink
         to="/sign-up"

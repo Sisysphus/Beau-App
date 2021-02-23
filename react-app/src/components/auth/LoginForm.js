@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { login } from "../../services/auth";
+import { login, demo } from "../../services/auth";
 import { NavLink } from "react-router-dom";
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
@@ -31,8 +31,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   const DemoUser = () => {
-    setEmail("demo@aa.io");
-    setPassword("password");
+    demo();
+    // window.location.href("/");
   };
 
   return (

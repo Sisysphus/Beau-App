@@ -58,8 +58,6 @@ const HomePage = ({ loggedInUser }) => {
 
   return loggedInUser ? (
     <div className="homepage">
-      <h1 className="beau-text">Beau</h1>
-      <hr className="theline"></hr>
       <h3 className="buds"></h3>
       <div className="swipedCardsContainer">
         {people.map((person) => (

@@ -33,7 +33,11 @@ function App() {
   return (
     <div className="entire-wrap">
       <BrowserRouter>
-        <NavBar loggedInUser={user || {}} setAuthenticated={setAuthenticated} />
+        <NavBar
+          authenticated={authenticated}
+          loggedInUser={user || {}}
+          setAuthenticated={setAuthenticated}
+        />
         <Switch>
           <Route path="/login" exact={true}>
             <LoginForm

@@ -19,3 +19,12 @@
 .person {
   color: black;
 }
+
+.top-navbar {
+  padding-bottom: 20px;
+}
+
+.nav-icon {
+  color: #7b8390;
+  font-size: 25px;
+}
