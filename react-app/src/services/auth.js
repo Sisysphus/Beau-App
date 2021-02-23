@@ -41,6 +41,7 @@ export const demo = async (email = "demo2@aa.io", password = "password") => {
       password,
     }),
   });
+  window.location.reload();
   return await response.json();
 };
 

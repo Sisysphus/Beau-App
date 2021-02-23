@@ -36,49 +36,51 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   };
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
-      <div className="container-boi">
+    <>
+      <form onSubmit={onLogin}>
         <div>
-          <label htmlFor="email">Email</label>
-          <input
-            name="email"
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={updateEmail}
-          />
+          {errors.map((error) => (
+            <div>{error}</div>
+          ))}
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={updatePassword}
-          />
-          <button type="submit" className="login-button">
-            Login
-          </button>
-          <button onClick={DemoUser} type="submit">
-            Demo
-          </button>
+        <div className="container-boi">
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              name="email"
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={updatePassword}
+            />
+            <button type="submit" className="login-button">
+              Login
+            </button>
+          </div>
+          <NavLink
+            to="/sign-up"
+            className="logout"
+            exact={true}
+            activeClassName="active"
+          >
+            Sign Up
+          </NavLink>
         </div>
-        <NavLink
-          to="/sign-up"
-          className="logout"
-          exact={true}
-          activeClassName="active"
-        >
-          Sign Up
-        </NavLink>
-      </div>
-    </form>
+      </form>
+      <button onClick={DemoUser} type="submit">
+        Demo
+      </button>
+    </>
   );
 };
 
