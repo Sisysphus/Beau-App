@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap%27");
+
 .card-display {
   width: 400px;
-  height: 50vh;
+  height: 300px;
   padding: 20px;
   position: relative;
   max-width: 75vw;
@@ -36,7 +38,7 @@
 .send-message {
   position: relative;
   left: 10px;
-  top: 700px;
+  top: 550px;
 }
 
 .beau-text {
@@ -52,11 +54,6 @@
   justify-content: center;
   margin-top: 20px;
   color: black;
-}
-
-.h1send {
-  position: relative;
-  left: 135px;
 }
 
 .senderboi {

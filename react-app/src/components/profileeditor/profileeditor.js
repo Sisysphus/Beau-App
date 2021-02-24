@@ -31,67 +31,85 @@ function ProfileEditor({ displayInfo }) {
   };
   /* If display info is true actually return comp otherwise don't  */
   return displayInfo ? (
-    <form onSubmit={onEdit}>
-      <div>
-        <label>User Name</label>
-        <input
-          type="text"
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-        ></input>
+    <form className="profile-form" onSubmit={onEdit}>
+      <div className="row">
+        <div className="form-group col-6">
+          <label className="text-white mb-2 mt-5">User Name</label>
+          <input
+            className="form-control mb-3"
+            type="text"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          ></input>
+        </div>
+        <div className="form-group col-6">
+          <label className="text-white mb-2 mt-5">Email</label>
+          <input
+            className="form-control mb-3"
+            type="text"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          ></input>
+        </div>
       </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        ></input>
+      <div className="row">
+        <div className="form-group col-6">
+          <label className="text-white mb-2">Password</label>
+          <input
+            className="form-control mb-3"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          ></input>
+        </div>
+        <div className="form-group col-6">
+          <label className="text-white mb-2">Repeat Password</label>
+          <input
+            className="form-control mb-3"
+            type="password"
+            onChange={(e) => setRepeatPassword(e.target.value)}
+            value={repeatPassword}
+            required={true}
+          ></input>
+        </div>
       </div>
-      <div>
-        <label>Password</label>
+      <div className="form-group">
+        <label className="text-white mb-2">First Name</label>
         <input
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          onChange={(e) => setRepeatPassword(e.target.value)}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <div>
-        <label>First Name</label>
-        <input
+          className="form-control mb-3"
           type="text"
           onChange={(e) => setFirstName(e.target.value)}
           value={firstName}
           required={true}
         ></input>
       </div>
-      <div>
-        <label>GenderId</label>
+      <div className="form-group">
+        <label className="text-white mb-2">GenderId</label>
         <input
+          className="form-control mb-3"
           type="number"
           onChange={(e) => setGenderId(Number(e.target.value))}
           value={genderId}
           required={true}
         ></input>
       </div>
-      <div>
-        <label>Photo</label>
+      <div className="form-group ">
+        <label className="text-white mb-2">Photo</label>
         <input
+          className="form-control mb-3"
           type="text"
           onChange={(e) => setPhoto(e.target.value)}
           value={photo}
         ></input>
       </div>
-      <button type="submit">Submit</button>
+      <div className="w-200 d-flex justify-content-center">
+        <button
+          className="btn btn-success mt-3 w-80 align-middle sizebuttoner"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
     </form>
   ) : null;
 }

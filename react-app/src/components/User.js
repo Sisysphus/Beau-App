@@ -34,14 +34,35 @@ function User() {
 
   return (
     <div className="editor-info">
-      <strong>User Id:</strong> {userId}
-      <strong>Username:</strong> {user.username}
-      <strong>Email:</strong> {user.email}
-      <strong>Nickname:</strong> {user.nickname}
-      <strong>Bio:</strong> {user.bio}
-      <strong>Gender:</strong> {user.genderId}
-      <strong>First Name:</strong> {user.firstName}
-      <button type="edit" onClick={onEdit}>
+      <div className="d-flex">
+        <strong className="text-white">User Id-</strong>{" "}
+        <p className="text-white">{userId}</p>
+      </div>
+      <div className="d-flex">
+        <strong className="text-white">Username-</strong>{" "}
+        <p className="text-white">{user.username}</p>
+      </div>
+      <div className="d-flex">
+        <strong className="text-white">Email-</strong>{" "}
+        <p className="text-white">{user.email}</p>
+      </div>
+      {/* <div className="d-flex">
+        <strong className="text-white">Nickname-</strong>{" "}
+        <p className="text-white">{user.nickname}</p>
+      </div>
+      <div className="d-flex">
+        <strong className="text-white">Bio-</strong>{" "}
+        <p className="text-white">{user.bio}</p>
+      </div> */}
+      <div className="d-flex">
+        <strong className="text-white">Gender-</strong>{" "}
+        <p className="text-white">{user.genderId}</p>
+      </div>
+      <div className="d-flex">
+        <strong className="text-white">First Name-</strong>{" "}
+        <p className="text-white">{user.firstName}</p>
+      </div>
+      <button className="btn btn-light" type="edit" onClick={onEdit}>
         Edit
       </button>
       <ProfileEditor displayInfo={displayInfo} />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import TinderCard from "react-tinder-card";
 import "./HomePage.css";
 const HomePage = ({ loggedInUser }) => {
@@ -39,7 +40,7 @@ const HomePage = ({ loggedInUser }) => {
   };
 
   const onSwipe = (direction, username) => {
-    console.log("You swiped: " + direction, username);
+    alert("You swiped: " + username, direction);
   };
 
   // useEffect
@@ -59,6 +60,18 @@ const HomePage = ({ loggedInUser }) => {
   return loggedInUser ? (
     <div className="homepage">
       <h3 className="buds"></h3>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those
+        fields below.
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div className="swipedCardsContainer">
         {people.map((person) => (
           <TinderCard
@@ -72,28 +85,43 @@ const HomePage = ({ loggedInUser }) => {
             <div
               className="card-display"
               style={{ backgroundImage: `url(${person.profilePhoto.url})` }}
-            >
-              <h3>{person.name}</h3>
-            </div>
+            ></div>
           </TinderCard>
         ))}
 
         <div className="send-message">
-          <h1 className="h1send">Send Message</h1>
+          {/* {people.map((person) => (
+            <>
+              <h2 className="text-white">{person.name}</h2>
+            </>
+          ))} */}
+          <h1 className="beau-logo text-center">Send Message</h1>
           <form className="formy" onSubmit={onMessageFormSubmit}>
-            <label>Friend Id</label>
-            <input
-              type="number"
-              value={friendId}
-              onChange={(e) => setFriendId(Number(e.target.value))}
-            />
-            <label>Message</label>
-            <input
-              type="text"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-            <button className="senderboi" type="submit">
+            <div className="row">
+              <div className="col-6">
+                <label className="text-white mb-2">User</label>
+                <input
+                  className="form-control mb-3"
+                  type="number"
+                  value={friendId}
+                  onChange={(e) => setFriendId(Number(e.target.value))}
+                />
+              </div>
+              <div className="col-6">
+                <label className="text-white mb-2">Message</label>
+                <input
+                  className="form-control mb-3"
+                  type="text"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+              </div>
+            </div>
+            <button
+              className="senderboi"
+              type="submit"
+              className="form-control"
+            >
               Send
             </button>
           </form>

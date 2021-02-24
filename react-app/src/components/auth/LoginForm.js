@@ -43,10 +43,11 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             <div>{error}</div>
           ))}
         </div>
-        <div className="container-boi">
-          <div>
+        <div>
+          <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
+              className="form-control"
               name="email"
               type="text"
               placeholder="Email"
@@ -54,32 +55,65 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               onChange={updateEmail}
             />
           </div>
-          <div>
+          <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
+              className="form-control"
               name="password"
               type="password"
               placeholder="Password"
               value={password}
               onChange={updatePassword}
             />
-            <button type="submit" className="login-button">
-              Login
-            </button>
+            <div className="d-flex ">
+              <div className="form-group">
+                <button type="submit" className="btn btn-light mt-4 mr-4">
+                  Login
+                </button>
+              </div>
+              <NavLink
+                to="/sign-up"
+                className="btn btn-light mt-4 signupbutton"
+                exact={true}
+                activeClassName="active"
+              >
+                Sign Up
+              </NavLink>
+            </div>
           </div>
-          <NavLink
-            to="/sign-up"
-            className="logout"
-            exact={true}
-            activeClassName="active"
-          >
-            Sign Up
-          </NavLink>
         </div>
       </form>
-      <button onClick={DemoUser} type="submit">
+      <button className="btn btn-light mt-4" onClick={DemoUser} type="submit">
         Demo
       </button>
+      <div className="d-flex justify-content-between mt-5 ">
+        <div className="d-flex">
+          <i class="fab fa-linkedin text-light footer-icon"></i>
+          <a
+            target="blank"
+            href="https://www.linkedin.com/in/adam-faidy-bb8784105/"
+            className="text-light footer-text"
+          >
+            LinkedIn
+          </a>
+        </div>
+        <div className="d-flex">
+          <i class="fab fa-github-square text-light footer-icon"></i>
+          <a
+            target="blank"
+            href="https://github.com/Sisysphus/Beau-App"
+            className="text-light footer-text"
+          >
+            Github
+          </a>
+        </div>
+        <div className="d-flex">
+          <i class="fas fa-globe-asia text-light footer-icon"></i>
+          <a href="/" target="blank" className="text-light footer-text">
+            Portfolio
+          </a>
+        </div>
+      </div>
     </>
   );
 };

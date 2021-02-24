@@ -17,3 +17,15 @@
   justify-content: center;
   align-items: flex-end;
 }
+
+.signupbutton {
+  margin-left: 20px;
+}
+
+.footer-text {
+  margin-left: 5px;
+}
+
+.footer-icon {
+  margin-top: 5px;
+}
