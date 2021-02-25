@@ -24,8 +24,7 @@ def upgrade():
     sa.Column('recipient', sa.String(length=200), nullable=False),
     sa.Column('message', sa.String(length=200), nullable=False),
     sa.ForeignKeyConstraint(['user_Id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('user_Id')
+    sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
 

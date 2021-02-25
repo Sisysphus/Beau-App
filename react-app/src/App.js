@@ -13,13 +13,14 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState(null);
+  const [currentUserId, setCurrentUserId] = useState("");
 
   useEffect(() => {
     (async () => {
       const user = await authenticate();
-      console.log(user);
       if (!user.errors) {
         setAuthenticated(true);
+        setCurrentUserId(user.id);
         setUser(user);
       }
       setLoaded(true);
@@ -66,7 +67,7 @@ function App() {
             <User />
           </ProtectedRoute>
           <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-            <HomePage loggedInUser={user} />
+            <HomePage currentUserId={currentUserId} loggedInUser={user} />
           </ProtectedRoute>
         </Switch>
       </BrowserRouter>

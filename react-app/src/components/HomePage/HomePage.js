@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import TinderCard from "react-tinder-card";
 import "./HomePage.css";
-const HomePage = ({ loggedInUser }) => {
+const HomePage = ({ currentUserId, loggedInUser }) => {
   const [people, setPeople] = useState([]);
 
   const [friendId, setFriendId] = useState(1);
@@ -50,7 +50,6 @@ const HomePage = ({ loggedInUser }) => {
     // console.log(username);
     // console.log(currentUser);
   };
-  console.log(currentUser);
 
   const submitMessage = async (e) => {
     e.preventDefault();
@@ -60,7 +59,7 @@ const HomePage = ({ loggedInUser }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        myId,
+        currentUserId,
         recipient,
         message,
       }),

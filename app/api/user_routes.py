@@ -64,9 +64,10 @@ def photo():
 @user_routes.route("/messages", methods=['POST'])
 @login_required
 def newMessage():
-    userId = request.json("myId")
-    recipient = request.json("recipient")
-    message = request.json("message")
+    payload = request.get_json()
+    userId = payload["currentUserId"]
+    recipient = payload["recipient"]
+    message = payload["message"]
     newMessage = QuickMessages(user_Id=userId, recipient=recipient, message=message)
     db.session.add(newMessage)
     db.session.commit()
