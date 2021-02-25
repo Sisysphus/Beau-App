@@ -5,10 +5,14 @@ import "./HomePage.css";
 const HomePage = ({ loggedInUser }) => {
   const [people, setPeople] = useState([]);
 
-  const [message, setMessage] = useState("");
   const [friendId, setFriendId] = useState(1);
   const [myId, setMyId] = useState(0);
   const [myMessage, myMessageId] = useState(null);
+  const [currentUser, setCurrentUser] = useState("");
+  const [direction, setDirection] = useState("");
+  const [recipient, setRecipient] = useState("");
+  const [message, setMessage] = useState("");
+
   const onMessageFormSubmit = async (e) => {
     e.preventDefault();
     console.log({
@@ -40,7 +44,35 @@ const HomePage = ({ loggedInUser }) => {
   };
 
   const onSwipe = (direction, username) => {
-    alert("You swiped: " + username, direction);
+    setCurrentUser(username);
+    setDirection(direction);
+    // console.log(username);
+    // console.log(username);
+    // console.log(currentUser);
+  };
+  console.log(currentUser);
+
+  const submitMessage = async (e) => {
+    e.preventDefault();
+    const response = await fetch("/api/users/messages", {
+      method: ["POST"],
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        myId,
+        recipient,
+        message,
+      }),
+    });
+  };
+
+  const updateMessage = (e) => {
+    setMessage(e.target.value);
+  };
+
+  const updateRecipient = (e) => {
+    setRecipient(e.target.value);
   };
 
   // useEffect
@@ -58,76 +90,100 @@ const HomePage = ({ loggedInUser }) => {
   }, []);
 
   return loggedInUser ? (
-    <div className="homepage">
-      <h3 className="buds"></h3>
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Holy guacamole!</strong> You should check in on some of those
-        fields below.
-        <button
-          type="button"
-          class="close"
-          data-dismiss="alert"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div className="swipedCardsContainer">
-        {people.map((person) => (
-          <TinderCard
-            onCardLeftScreen={(direction) =>
-              onSwipe(direction, person.username)
-            }
-            className="swipedCard"
-            key={person.name}
-            preventSwipe={["up", "down"]}
-          >
-            <div
-              className="card-display"
-              style={{ backgroundImage: `url(${person.profilePhoto.url})` }}
-            ></div>
-          </TinderCard>
-        ))}
+    <>
+      <div className="homepage">
+        <h3 className="buds"></h3>
+        <h1 className="text-white text-center">{currentUser}</h1>
+        {direction ? (
+          <p className="text-white text-center">You swiped {direction}</p>
+        ) : (
+          ""
+        )}
 
-        <div className="send-message">
-          {/* {people.map((person) => (
+        <div className="swipedCardsContainer">
+          {people.map((person) => (
+            <TinderCard
+              onCardLeftScreen={(direction) =>
+                onSwipe(direction, person.username)
+              }
+              className="swipedCard"
+              key={person.name}
+              preventSwipe={["up", "down"]}
+            >
+              <div
+                className="card-display"
+                style={{ backgroundImage: `url(${person.profilePhoto.url})` }}
+              ></div>
+            </TinderCard>
+          ))}
+
+          <div className="send-message">
+            {/* {people.map((person) => (
             <>
               <h2 className="text-white">{person.name}</h2>
             </>
           ))} */}
-          <h1 className="beau-logo text-center">Send Message</h1>
-          <form className="formy" onSubmit={onMessageFormSubmit}>
-            <div className="row">
-              <div className="col-6">
-                <label className="text-white mb-2">User</label>
-                <input
-                  className="form-control mb-3"
-                  type="number"
-                  value={friendId}
-                  onChange={(e) => setFriendId(Number(e.target.value))}
-                />
+            <h1 className="beau-logo text-center">Send Message</h1>
+
+            <form className="formy" onSubmit={submitMessage}>
+              <div className="row">
+                <div className="col-6">
+                  <label className="text-white mb-2">User</label>
+                  <input
+                    className="form-control mb-3"
+                    type="text"
+                    onChange={updateRecipient}
+                  />
+                </div>
+                <div className="col-6">
+                  <label className="text-white mb-2">Message</label>
+                  <input
+                    className="form-control mb-3"
+                    type="text"
+                    onChange={updateMessage}
+                  />
+                </div>
               </div>
-              <div className="col-6">
-                <label className="text-white mb-2">Message</label>
-                <input
-                  className="form-control mb-3"
-                  type="text"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                />
-              </div>
-            </div>
-            <button
-              className="senderboi"
-              type="submit"
-              className="form-control"
-            >
-              Send
-            </button>
-          </form>
+              <button
+                className="senderboi"
+                type="submit"
+                className="form-control"
+              >
+                Send
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+      <div className="d-flex justify-content-between mt-5 thefooterprofilez">
+        <div className="d-flex">
+          <i class="fab fa-linkedin text-light footer-icon"></i>
+          <a
+            target="blank"
+            href="https://www.linkedin.com/in/adam-faidy-bb8784105/"
+            className="text-light footer-text"
+          >
+            LinkedIn
+          </a>
+        </div>
+        <div className="d-flex">
+          <i class="fab fa-github-square text-light footer-icon"></i>
+          <a
+            target="blank"
+            href="https://github.com/Sisysphus/Beau-App"
+            className="text-light footer-text"
+          >
+            Github
+          </a>
+        </div>
+        <div className="d-flex">
+          <i class="fas fa-globe-asia text-light footer-icon"></i>
+          <a href="/" target="blank" className="text-light footer-text">
+            Portfolio
+          </a>
+        </div>
+      </div>
+    </>
   ) : null;
 };
 

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, Swipe, db, UserPhoto
+from app.models import User, Swipe, db, UserPhoto, QuickMessages
 user_routes = Blueprint('users', __name__)
 
 
@@ -59,6 +59,21 @@ def photo():
     return {
         "Success": True
     }
+
+
+@user_routes.route("/messages", methods=['POST'])
+@login_required
+def newMessage():
+    userId = request.json("myId")
+    recipient = request.json("recipient")
+    message = request.json("message")
+    newMessage = QuickMessages(user_Id=userId, recipient=recipient, message=message)
+    db.session.add(newMessage)
+    db.session.commit()
+    return {
+        "Success": True
+    }
+
 
 
 """

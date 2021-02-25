@@ -17,7 +17,13 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     photos = db.relationship(
-        "UserPhoto", foreign_keys="UserPhoto.userAccountId")
+        "UserPhoto", foreign_keys="UserPhoto.userAccountId"
+        )
+
+    quickmessages = db.relationship(
+        "QuickMessages", back_populates="users",
+        cascade = 'all, delete, delete-orphan'
+    )
 
 # times you've swiped right
     swipe1 = db.relationship(

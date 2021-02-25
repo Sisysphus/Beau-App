@@ -4,3 +4,4 @@ from .conversation import Conversation
 from .messages import Message
 from .userPhoto import UserPhoto
 from .swipes import Swipe
+from .quickmessages import QuickMessages
