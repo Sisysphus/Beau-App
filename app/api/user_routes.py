@@ -76,6 +76,14 @@ def newMessage():
     }
 
 
+@user_routes.route("/<int:id>/my-messages", methods=['GET'])
+@login_required
+def myMessage(id):
+    user = User.query.get(id)
+    messages = QuickMessages.query.filter(user.username == QuickMessages.recipient).all()
+    return {"messages": [message.to_dict() for message in messages]}
+
+
 
 """
 

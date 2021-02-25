@@ -12,6 +12,7 @@ const HomePage = ({ currentUserId, loggedInUser }) => {
   const [direction, setDirection] = useState("");
   const [recipient, setRecipient] = useState("");
   const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState("");
 
   const onMessageFormSubmit = async (e) => {
     e.preventDefault();
@@ -53,6 +54,7 @@ const HomePage = ({ currentUserId, loggedInUser }) => {
 
   const submitMessage = async (e) => {
     e.preventDefault();
+    setSuccess("Successfully sent!");
     const response = await fetch("/api/users/messages", {
       method: ["POST"],
       headers: {
@@ -144,11 +146,14 @@ const HomePage = ({ currentUserId, loggedInUser }) => {
                 </div>
               </div>
               <button
-                className="senderboi"
+                className={
+                  success
+                    ? "bg-success text-white form-control animate__animated animate__pulse"
+                    : "senderboi form-control "
+                }
                 type="submit"
-                className="form-control"
               >
-                Send
+                {success ? success : "Send"}
               </button>
             </form>
           </div>

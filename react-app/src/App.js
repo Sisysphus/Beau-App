@@ -32,7 +32,7 @@ function App() {
   }
 
   return (
-    <div className="entire-wrap">
+    <div className="entire-wrap  animate__animated animate__fadeInUp">
       <BrowserRouter>
         <NavBar
           authenticated={authenticated}
@@ -64,7 +64,7 @@ function App() {
             exact={true}
             authenticated={authenticated}
           >
-            <User />
+            <User currentUserId={currentUserId} />
           </ProtectedRoute>
           <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
             <HomePage currentUserId={currentUserId} loggedInUser={user} />
