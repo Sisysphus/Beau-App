@@ -65,20 +65,17 @@ function User({ currentUserId }) {
         <strong className="text-white">Bio-</strong>{" "}
         <p className="text-white">{user.bio}</p>
       </div> */}
-      <div className="d-flex">
-        <strong className="text-white">Gender-</strong>{" "}
-        <p className="text-white">{user.genderId}</p>
-      </div>
+
       <div className="d-flex">
         <strong className="text-white">First Name-</strong>{" "}
         <p className="text-white">{user.firstName}</p>
       </div>
-      <button className="btn btn-light" type="edit" onClick={onEdit}>
+      <button className="btn btn-light " type="edit" onClick={onEdit}>
         Edit
       </button>
       {myMessages.map((card, id) => (
-        <p className="text-white">
-          {card.message} <span>Sent By{card.recipient}</span>
+        <p className="text-white mt-5">
+          {card.message} <span>Sent By Bone crusher</span>
         </p>
       ))}
 
