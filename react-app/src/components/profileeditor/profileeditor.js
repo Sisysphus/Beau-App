@@ -84,7 +84,7 @@ function ProfileEditor({ displayInfo }) {
         ></input>
       </div>
       <div className="form-group">
-        <label className="text-white mb-2">GenderId</label>
+        <label className="text-white mb-2">Exercise level</label>
         <input
           className="form-control mb-3"
           type="number"
