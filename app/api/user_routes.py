@@ -84,6 +84,12 @@ def myMessage(id):
     return {"messages": [message.to_dict() for message in messages]}
 
 
+@user_routes.route("/<int:id>/get-name", methods=['GET'])
+@login_required
+def getName(id):
+    user = User.query.get(id)
+    return user.to_dict()
+
 
 """
 

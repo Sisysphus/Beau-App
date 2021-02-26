@@ -43,40 +43,52 @@ function User({ currentUserId }) {
     return null;
   }
 
+  const retrieveName = async (id) => {
+    const data = await axios.get(`/api/users/${id}/get-name`);
+    console.log(data.data);
+  };
+
   return (
     <div className="editor-info">
-      <div className="d-flex">
-        <strong className="text-white">User Id-</strong>{" "}
-        <p className="text-white">{userId}</p>
-      </div>
-      <div className="d-flex">
-        <strong className="text-white">Username-</strong>{" "}
-        <p className="text-white">{user.username}</p>
-      </div>
-      <div className="d-flex">
-        <strong className="text-white">Email-</strong>{" "}
-        <p className="text-white">{user.email}</p>
-      </div>
-      {/* <div className="d-flex">
+      <div className="card mb-2 bg-dark p-2 w-50 coloredboi">
+        <div className="d-flex ">
+          <strong className="text-white">User Id-</strong>{" "}
+          <p className="text-white">{userId}</p>
+        </div>
+        <div className="d-flex ">
+          <strong className="text-white">Username-</strong>{" "}
+          <p className="text-white">{user.username}</p>
+        </div>
+        <div className="d-flex">
+          <strong className="text-white">Email-</strong>{" "}
+          <p className="text-white">{user.email}</p>
+        </div>
+        {/* <div className="d-flex">
         <strong className="text-white">Nickname-</strong>{" "}
         <p className="text-white">{user.nickname}</p>
-      </div>
-      <div className="d-flex">
+        </div>
+        <div className="d-flex">
         <strong className="text-white">Bio-</strong>{" "}
         <p className="text-white">{user.bio}</p>
       </div> */}
 
-      <div className="d-flex">
-        <strong className="text-white">First Name-</strong>{" "}
-        <p className="text-white">{user.firstName}</p>
+        <div className="d-flex">
+          <strong className="text-white">First Name-</strong>{" "}
+          <p className="text-white">{user.firstName}</p>
+        </div>
       </div>
       <button className="btn btn-light " type="edit" onClick={onEdit}>
         Edit
       </button>
       {myMessages.map((card, id) => (
-        <p className="text-white mt-5">
-          {card.message} <span>Sent By Bone crusher</span>
-        </p>
+        <div className="card mt-3 bg-dark p-3 w-100">
+          <p className="text-white mt-5">
+            {card.message}{" "}
+            <span className="text-muted">Sent By {card.user_Id}</span>
+          </p>
+          <button className="btn btn-success">Reply</button>
+          <button className="btn btn-danger mt-2">Delete</button>
+        </div>
       ))}
 
       <ProfileEditor displayInfo={displayInfo} />

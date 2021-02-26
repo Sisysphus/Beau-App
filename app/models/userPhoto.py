@@ -9,7 +9,7 @@ class UserPhoto(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userAccountId = db.Column(
         db.Integer, db.ForeignKey("users.id"), nullable=False)
-    url = db.Column(db.String(100), nullable=False)
+    url = db.Column(db.String(10000), nullable=False)
     user = db.relationship(
         "User", foreign_keys="UserPhoto.userAccountId"
     )

@@ -19,14 +19,18 @@ const NavBar = ({ setAuthenticated, loggedInUser, authenticated }) => {
           activeClassName="active"
         >
           {/* <img src={image1} className="beau-logo" alt="tinder" /> */}
-          <h1 className="beau-logo">Beau</h1>
+          <h1 className="beau-logo hvr-bounce-in ">Beau</h1>
         </NavLink>
         <NavLink
           to={`/users/${loggedInUser.id}`}
           exact={true}
           activeClassName="active"
         >
-          {authenticated ? <h1 className="beau-logo">Profile</h1> : ""}
+          {authenticated ? (
+            <h1 className="beau-logo hvr-bounce-in ">Profile</h1>
+          ) : (
+            ""
+          )}
         </NavLink>
         {authenticated ? (
           <LogoutButton setAuthenticated={setAuthenticated} />

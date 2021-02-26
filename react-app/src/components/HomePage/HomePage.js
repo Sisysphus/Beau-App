@@ -124,7 +124,7 @@ const HomePage = ({ currentUserId, loggedInUser }) => {
               <h2 className="text-white">{person.name}</h2>
             </>
           ))} */}
-            <h1 className="beau-logo text-center">Send Message</h1>
+            <h1 className="beau-logo text-center ">Send Message</h1>
 
             <form className="formy" onSubmit={submitMessage}>
               <div className="row">
