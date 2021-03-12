@@ -1,0 +1,5 @@
+Make sure o add apckages tor equirement txt if you get an error
+
+error " NOT FOUND WITHIN ... something " 
+
+Add that module package into req in req.txt
