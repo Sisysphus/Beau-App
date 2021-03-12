@@ -44,10 +44,10 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           ))}
         </div>
         <div>
-          <div className="form-group">
+          <div className="form-group text-white">
             <label htmlFor="email">Email</label>
             <input
-              className="form-control"
+              className="form-control text-white"
               name="email"
               type="text"
               placeholder="Email"
